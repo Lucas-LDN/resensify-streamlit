@@ -46,39 +46,45 @@ st.sidebar.markdown("""
 
 st.sidebar.header("Our goal")
 st.sidebar.markdown("""
-  Implement a NLP Sentiment Analysis model:
-  * To predict whether a Yelp review is positive or negative
-  * Used a learning labeled set of 8m Yelp reviews.
-  """)
+                       Implement a NLP Sentiment Analysis model:
+                       * To predict whether a Yelp review is positive or negative
+                       * Used a learning labeled set of 8m Yelp reviews.
+                       """)
 
 st.sidebar.header("Our solution")
 st.sidebar.markdown("""
-  We chose BERT to model our data:
-  * BERT is reason 1
-  * BERT is reason 2
-  * BERT is reason 3
-  """)
+                       We chose BERT to model our data:
+                       * BERT is reason 1
+                       * BERT is reason 2
+                       * BERT is reason 3
+                       """)
 #####################################
 # Main page
 #####################################
 st.title("Resensify...make sense of sentiment")
 
-st.header("Meet the team")
-if st.checkbox("Show/Hide"):
-  resensify_team_image = Image.open('resensify_meet_the_team.PNG')
-  st.text("What a great bunch we are!")
-  st.image(
-           resensify_team_image,
-           caption='(left to right: Lucas, Mohammed and Paulette)',
-           use_column_width=True
-           )
+#st.header("Meet the team")
+#if st.checkbox("Show/Hide"):
+#  resensify_team_image = Image.open('resensify_meet_the_team.PNG')
+#  st.text("What a great bunch we are!")
+#  st.image(
+#           resensify_team_image,
+#           caption='(left to right: Lucas, Mohammed and Paulette)',
+#           use_column_width=True
+#           )
 
 st.header("Choose a presentation")
+
+st.write("""
+            Choose between our original idea presentation.
+            And our Sentiment Analysis model, using Bert.
+            """)
+
 status = st.radio(
                   " ",
                   (
-                    "Original presentation",
-                    "Yelp Sentiment Analysis model")
+                    "Original idea presentation",
+                    " Yelp Sentiment Analysis Model")
                   )
 url = 'https://docs.google.com/presentation/d/1RnE1slwuDa4GWgzOedUXr0hjqC9LdFwWLYuJov2eDOA/edit?usp=sharing'
 
@@ -87,7 +93,13 @@ if status == "Yelp Sentiment Analysis model":
   import webbrowser
   webbrowser.open_new_tab(url)
 else:
-  st.info("To view today's presentation, click Yelp Sentiment Analysis model")
+  st.info("""
+             To view today's presentation,
+             click 'Yelp Sentiment Analysis Model'
+             (opens in a new tab).
+             """)
+
+
 
 # Dummy to show how to load the data with a button
 st.header("Upload your file")
@@ -122,7 +134,7 @@ if st.button('Load data'):
   st.success("Load complete")
 
 #Text area
-st.title("Let BERT predict")
+st.header("Let BERT predict")
 predict_df = pd.read_csv('sample_reviews.csv')
 review1 = predict_df.text[0]
 review2 = predict_df.text[1]
