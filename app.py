@@ -5,7 +5,12 @@ from PIL import Image
 import os
 import csv
 
-CSV_FILEPATH_YELP_SAMPLE = os.path.join(os.getcwd(),"..","data","data_sample_AZ_NV.csv")
+CSV_FILEPATH_YELP_SAMPLE = os.path.join(
+                                        os.getcwd(),
+                                        "..",
+                                        "data",
+                                        "data_sample_AZ_NV.csv"
+                                        )
 
 ####################
 # functions
@@ -26,7 +31,11 @@ st.sidebar.markdown("""
   We're a great bunch of data scientists.
   """)
 resensify_team_sidebar = Image.open('resensify_meet_the_team.PNG')
-st.sidebar.image(resensify_team_sidebar, caption='Lucas, Mohammed and Paulette', use_column_width=True)
+st.sidebar.image(
+                 resensify_team_sidebar,
+                 caption='Lucas, Mohammed and Paulette',
+                 use_column_width=True
+                 )
 
 st.sidebar.header("What is NLP?")
 st.sidebar.markdown("""
@@ -58,24 +67,37 @@ st.header("Meet the team")
 if st.checkbox("Show/Hide"):
   resensify_team_image = Image.open('resensify_meet_the_team.PNG')
   st.text("What a great bunch we are!")
-  st.image(resensify_team_image, caption='(left to right: Lucas, Mohammed and Paulette)', use_column_width=True)
+  st.image(
+           resensify_team_image,
+           caption='(left to right: Lucas, Mohammed and Paulette)',
+           use_column_width=True
+           )
 
 st.header("Choose a presentation")
-status = st.radio(" ", ("Original pitch", "Yelp Sentiment Analysis model"))
+status = st.radio(
+                  " ",
+                  (
+                    "Original presentation",
+                    "Yelp Sentiment Analysis model")
+                  )
 url = 'https://docs.google.com/presentation/d/1RnE1slwuDa4GWgzOedUXr0hjqC9LdFwWLYuJov2eDOA/edit?usp=sharing'
 if status == "Yelp Sentiment Analysis model":
   st.success("This will launch a link")
   import webbrowser
   webbrowser.open_new_tab(url)
 else:
-  st.warning("To view today's presentation, click Yelp Sentiment Analysis model")
+  st.info("To view today's presentation, click Yelp Sentiment Analysis model")
 
 
 # Dummy to show how to load the data with a button
 st.header("Upload your file")
-selectbox_choose_file = st.selectbox("Select the location of file to be uploaded:", ["Local: data/Yelp_training_data.json",
-  "GCP: Yelp_training_data.json", "Local: Yelp_test_data.json",
-  "GCP: Yelp_test_data.json"])
+selectbox_choose_file = st.selectbox(
+                                     "Select the location of file to be uploaded:",
+                                     ["Local: data/Yelp_training_data.json",
+                                     "GCP: Yelp_training_data.json",
+                                     "Local: Yelp_test_data.json",
+                                     "GCP: Yelp_test_data.json"]
+                                     )
 st.write("You selected: ", selectbox_choose_file)
 if st.button('Load data'):
   st.markdown("""
