@@ -74,13 +74,6 @@ if st.checkbox("Show/Hide"):
            )
 
 st.header("Choose a presentation")
-if status == "Yelp Sentiment Analysis model":
-  st.success("This will launch a link")
-  import webbrowser
-  webbrowser.open_new_tab(url)
-else:
-  st.info("To view today's presentation, click Yelp Sentiment Analysis model")
-
 status = st.radio(
                   " ",
                   (
@@ -89,6 +82,12 @@ status = st.radio(
                   )
 url = 'https://docs.google.com/presentation/d/1RnE1slwuDa4GWgzOedUXr0hjqC9LdFwWLYuJov2eDOA/edit?usp=sharing'
 
+if status == "Yelp Sentiment Analysis model":
+  st.success("This will launch a link")
+  import webbrowser
+  webbrowser.open_new_tab(url)
+else:
+  st.info("To view today's presentation, click Yelp Sentiment Analysis model")
 
 # Dummy to show how to load the data with a button
 st.header("Upload your file")
