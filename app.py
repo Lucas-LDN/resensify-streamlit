@@ -113,9 +113,10 @@ selectbox_choose_file = st.selectbox(
 st.write("You selected: ", selectbox_choose_file)
 if st.button('Load data'):
   st.markdown("""
-    The following has been carried out on the data:
-    ** New column added: Sentiment** - this converts the star rating to a sentiment (1-3: Negative, 4-5: Positive)
-    """)
+                 The following has been carried out on the data:
+                 ** New column added: Sentiment** - this converts the star rating to a sentiment
+                 (1-3: Negative, 4-5: Positive)
+                 """)
   df = pd.read_csv('sample_reviews.csv')
   line_count = st.slider('Select a line count', 1, 10, 3)
   # and used in order to select the displayed lines
@@ -138,16 +139,19 @@ st.header("Let BERT predict")
 predict_df = pd.read_csv('sample_reviews.csv')
 review1 = predict_df.text[0]
 review2 = predict_df.text[1]
-status = st.radio(" ", (review1, "hard coded review"))
-message = st.text_area("Enter your review to predict", review1)
+status = st.radio(
+                  " ",
+                  (review1, "Hard coded review"))
+message = st.text_area(
+                       "Enter your review to predict",
+                       review1
+                       )
 
 if st.button('BERT predict sentiment'):
   st.success("This review is: NEGATIVE")
 
 if st.button('BERT predict rating'):
   st.success("This rating would be: 1 star")
-
-
 
 
 if __name__ == '__main__':
