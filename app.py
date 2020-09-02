@@ -5,6 +5,7 @@ from PIL import Image
 import os
 import csv
 
+
 CSV_FILEPATH_YELP_SAMPLE = os.path.join(
                                         os.getcwd(),
                                         "..",
@@ -25,11 +26,12 @@ def load_yelp_sample_AZ_NV(file):
     return df
 
 
-#sidebars
+#####################################
+# Sidebar
+#####################################
+
 st.sidebar.header("About the team")
-st.sidebar.markdown("""
-  We're a great bunch of data scientists.
-  """)
+st.sidebar.markdown("""We're a great bunch of data scientists.""")
 resensify_team_sidebar = Image.open('resensify_meet_the_team.PNG')
 st.sidebar.image(
                  resensify_team_sidebar,
@@ -39,25 +41,37 @@ st.sidebar.image(
 
 st.sidebar.header("What is NLP?")
 st.sidebar.markdown("""
-  Natural Language Processing (NLP) is a way for
-  computers to analyse human language and
-  derive useful meaning from it
-  """)
+                       Natural Language Processing (NLP) is a way for
+                       computers to analyse human language and
+                       derive useful meaning from it.
+                       """)
 
 st.sidebar.header("Our goal")
 st.sidebar.markdown("""
                        Implement a NLP Sentiment Analysis model:
-                       * To predict whether a Yelp review is positive or negative
-                       * Used a learning labeled set of 8m Yelp reviews.
+                       * To predict whether a Yelp review is positive or negative.
+                       * Used a labeled learning set of 8m Yelp reviews.
                        """)
 
 st.sidebar.header("Our solution")
 st.sidebar.markdown("""
                        We chose BERT to model our data:
-                       * BERT is reason 1
-                       * BERT is reason 2
-                       * BERT is reason 3
+                       * reason 1
+                       * reason 2
+                       * reason 3
                        """)
+
+st.sidebar.header("Our Presentations")
+st.sidebar.markdown("""
+                       Choose between our original idea presentation
+                       and our final presentation slides:
+                       """)
+st.sidebar.markdown("""
+                       <embed src="https://drive.google.com/viewerng/viewer?embedded=true&url=https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf" width="200" height="200">
+                       """,
+                       unsafe_allow_html=True
+                       )
+
 #####################################
 # Main page
 #####################################
@@ -76,8 +90,8 @@ st.title("Resensify...make sense of sentiment")
 st.header("Choose a presentation")
 
 st.write("""
-            Choose between our original idea presentation.
-            And our Sentiment Analysis model, using Bert.
+            Choose between our original idea presentation
+            and our Sentiment Analysis model (using Bert).
             """)
 
 status = st.radio(
@@ -99,16 +113,14 @@ else:
              (opens in a new tab).
              """)
 
-
-
 # Dummy to show how to load the data with a button
 st.header("Upload your file")
 selectbox_choose_file = st.selectbox(
                                      "Select the location of file to be uploaded:",
-                                     ["Local: data/Yelp_training_data.json",
-                                     "GCP: Yelp_training_data.json",
-                                     "Local: Yelp_test_data.json",
-                                     "GCP: Yelp_test_data.json"]
+                                        ["Local: data/Yelp_training_data.json",
+                                        "GCP: Yelp_training_data.json",
+                                        "Local: Yelp_test_data.json",
+                                        "GCP: Yelp_test_data.json"]
                                      )
 st.write("You selected: ", selectbox_choose_file)
 if st.button('Load data'):
@@ -134,7 +146,11 @@ if st.button('Load data'):
     time.sleep(5)
   st.success("Load complete")
 
+#####################################
+# BERT demo
+#####################################
 #Text area
+
 st.header("Let BERT predict")
 predict_df = pd.read_csv('sample_reviews.csv')
 review1 = predict_df.text[0]
