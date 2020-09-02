@@ -11,9 +11,9 @@ REQUIRED_PACKAGES = [
     'psutil==5.7.0',
     'memoized-property==1.0.3',
     'scipy== 1.4.1',
-    'tensorflow==2.3.0',
+    'tensorflow==2.0.0',
     'tensorflow-hub==0.9.0',
-    'tf-models-official==2.3.0',
+    'tf-models-official==2.0.0',
     'streamlit==0.64.0']
 
 setup(
